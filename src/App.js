@@ -79,7 +79,7 @@ function App() {
 
 					return axios
 						.get(
-							"https://api.openweathermap.org/data/2.5/onecall?",
+							"https://api.openweathermap.org/data/2.5/forecast?",
 							forecastConfig
 						)
 						.then((res) => {
@@ -87,7 +87,7 @@ function App() {
 
 							formattedLocation = {
 								...formattedLocation,
-								dailyForcasts: data.daily,
+								dailyForcasts: data.list,
 							};
 							parseDays(formattedLocation.dt, formattedLocation);
 							setLocationData(formattedLocation);

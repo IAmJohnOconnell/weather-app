@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Card = styled.div`
 	display: grid;
-	grid-template-areas: "day" "image" "temp";
+	grid-template-areas: "day" "time" "image" "temp";
 	place-items: center;
 	padding: 0.5em;
 	transition: all ease 0.2s;
@@ -18,9 +18,9 @@ const Card = styled.div`
 		box-shadow: 0 0 40px -5px rgba(0, 0, 0, 0.2);
 	}
 
-	@media (max-width: 700px) {
+	@media (max-width: 599px) {
 		align-items: center;
-		grid-template-areas: "day image temp";
+		grid-template-areas: "day time image temp";
 		grid-template-columns: repeat(3, 1fr);
 	}
 `;
@@ -37,17 +37,25 @@ const Day = styled.p`
 	text-align: center;
 `;
 
+const Time = styled.p`
+	grid-area: time;
+	width: min-content;
+	margin: 0;
+	text-align: center;
+`;
+
 const Temp = styled.p`
 	grid-area: temp;
 	font-weight: 700;
 	margin: 0;
 `;
 
-const SmallCard = ({ image, day, temp }) => {
+const SmallCard = ({ image, day,time, temp }) => {
 	return (
 		<Card>
 			<Icon src={image} alt='' />
 			<Day>{day}</Day>
+			<Time>{time}</Time>
 			<Temp>{temp}&deg;</Temp>
 		</Card>
 	);

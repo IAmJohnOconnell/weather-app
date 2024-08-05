@@ -7,10 +7,11 @@ const WeatherContainer = styled.div`
 	background-color: #5e6777;
 	box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.4);
 	transition: all 300ms ease;
+	max-width: 600px;
 	:hover {
 		transform: scale(1.05) perspective(1500px) rotateY(10deg);
 	}
-	@media (max-width: 700px) {
+	@media (max-width: 599px) {
 		:hover {
 			transform: scale(1.05) perspective(1500px) rotateX(-10deg);
 		}
