@@ -11,9 +11,27 @@ const ForecastDataSection = styled.section`
 	gap: 0.2em;
 	border-radius: 1rem;
 	box-shadow: 0 0 25px -5px rgba(0, 0, 0, 0.85);
-	@media (max-width: 700px) {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	max-width: 600px;
+	@media (max-width: 599px) {
 		display: flex;
 		flex-direction: column;
+	}
+
+	::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		border-radius: 8px;
+		background-color: #222831;
+		box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 8px;
+		background-color: #5e6777;
 	}
 `;
 
@@ -85,6 +103,10 @@ const ForecastContainer = ({ locationData }) => {
 		return windDirectionString;
 	};
 
+	const formatTime = (day) => {
+			 return day.dt_txt.split(' ')[1].slice(0,5);
+	}
+
 	return (
 		<>
 			{locationData && (
@@ -101,7 +123,7 @@ const ForecastContainer = ({ locationData }) => {
 						<DataRow>
 							<Heading>Wind</Heading>
 							<WindSection>
-								<WindSpeed>{locationData.wind.speed} m/h</WindSpeed>
+								<WindSpeed>{locationData.wind.speed} mph</WindSpeed>
 								<WindDirection>
 									<p>{locationData.wind.deg} &deg;</p>
 									<DirectionArrow direction={locationData.wind.deg}>
@@ -119,7 +141,8 @@ const ForecastContainer = ({ locationData }) => {
 									<SmallCard
 										image={day.skyconditionIcon}
 										day={day.date}
-										temp={Math.round(day.temp.day)}
+										time={formatTime(day)}
+										temp={Math.round(day.main.temp)}
 										key={day.dt}
 									/>
 								);

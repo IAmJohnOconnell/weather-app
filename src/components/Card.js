@@ -6,8 +6,8 @@ const StyledCard = styled.div`
 	flex-direction: column;
 	place-items: center;
 	text-align: center;
-	@media (max-width: 700px) {
-		flex-direction: row;
+	@media (max-width: 599px) {
+		flex-direction: column;
 		justify-content: space-around;
 	}
 `;
@@ -25,12 +25,17 @@ const CurrentForcastSummary = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
+
+const today = new Date().getDay();
+
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
 const Card = ({ locationData }) => {
 	return (
 		<StyledCard>
 			<div>
-				<h2>{locationData.date.dayOfWeek}</h2>
-				<p>{locationData.date.dateString}</p>
+				<h2>{dayNames[today]}</h2>
+				<p>Today</p>
 				<h4>
 					{locationData.name} {locationData.country}
 				</h4>

@@ -6,9 +6,9 @@ const StyledContainer = styled.main`
 	background: #0e1723;
 	border-radius: 2.5rem;
 	margin: 10vh auto;
-	max-width: max-content;
+	max-width: 600px;
 	justify-content: center;
-	@media (max-width: 700px) {
+	@media (max-width: 599px) {
 		display: flex;
 		flex-direction: column;
 		margin: 0 auto;
